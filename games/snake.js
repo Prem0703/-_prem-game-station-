@@ -43,13 +43,48 @@ timerText.innerText="⏱ Time: "+time
 
 }
 
-// keyboard control
+/* DESKTOP KEYBOARD CONTROL */
+
 document.addEventListener("keydown",function(e){
 
 if(e.key==="ArrowUp" && direction!=="DOWN") direction="UP"
 if(e.key==="ArrowDown" && direction!=="UP") direction="DOWN"
 if(e.key==="ArrowLeft" && direction!=="RIGHT") direction="LEFT"
 if(e.key==="ArrowRight" && direction!=="LEFT") direction="RIGHT"
+
+})
+
+/* MOBILE SWIPE CONTROL */
+
+let startX=0
+let startY=0
+
+canvas.addEventListener("touchstart",function(e){
+
+startX=e.touches[0].clientX
+startY=e.touches[0].clientY
+
+})
+
+canvas.addEventListener("touchmove",function(e){
+
+let endX=e.touches[0].clientX
+let endY=e.touches[0].clientY
+
+let dx=endX-startX
+let dy=endY-startY
+
+if(Math.abs(dx)>Math.abs(dy)){
+
+if(dx>30 && direction!=="LEFT") direction="RIGHT"
+else if(dx<-30 && direction!=="RIGHT") direction="LEFT"
+
+}else{
+
+if(dy>30 && direction!=="UP") direction="DOWN"
+else if(dy<-30 && direction!=="DOWN") direction="UP"
+
+}
 
 })
 
@@ -142,9 +177,11 @@ function draw(){
 ctx.fillStyle="#020617"
 ctx.fillRect(0,0,400,400)
 
+// food
 ctx.fillStyle="orange"
 ctx.fillRect(food.x,food.y,grid,grid)
 
+// snake
 ctx.fillStyle="#22c55e"
 
 snake.forEach(part=>{
@@ -165,7 +202,8 @@ let gameInterval = setInterval(gameLoop,speed)
 
 activeTimers.push(gameInterval)
 
-// timer
+/* TIMER */
+
 let timer = setInterval(function(){
 
 time--
