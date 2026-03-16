@@ -37,7 +37,7 @@ btn.innerText="..."
 
 let delay=Math.random()*2000 + 1000
 
-setTimeout(()=>{
+let t1=setTimeout(()=>{
 
 // trap chance
 if(Math.random()<0.2){
@@ -47,7 +47,8 @@ btn.innerText="TRAP!"
 
 waiting=true
 
-setTimeout(startRound,1200)
+let t2=setTimeout(startRound,1200)
+activeTimers.push(t2)
 
 return
 
@@ -62,6 +63,8 @@ startTime=Date.now()
 
 },delay)
 
+activeTimers.push(t1)
+
 }
 
 btn.onclick=function(){
@@ -73,7 +76,8 @@ info.innerText="❌ Too Early!"
 
 score=Math.max(0,score-5)
 
-setTimeout(startRound,1200)
+let t3=setTimeout(startRound,1200)
+activeTimers.push(t3)
 
 updateUI()
 
@@ -95,7 +99,8 @@ level++
 
 updateUI()
 
-setTimeout(startRound,1500)
+let t4=setTimeout(startRound,1500)
+activeTimers.push(t4)
 
 }
 

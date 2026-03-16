@@ -26,7 +26,6 @@ area.append(levelText,scoreText,coinText,timerText,question,trueBtn,falseBtn,sho
 let questions=[
 
 // EASY
-
 {q:"The human body has 206 bones.",a:true,e:"Adult human skeleton has 206 bones."},
 {q:"Water freezes at 0°C.",a:true,e:"At normal pressure water freezes at 0°C."},
 {q:"Plants produce oxygen during photosynthesis.",a:true,e:"Photosynthesis releases oxygen."},
@@ -39,7 +38,6 @@ let questions=[
 {q:"Fish can breathe underwater.",a:true,e:"Fish use gills to extract oxygen."},
 
 // MEDIUM
-
 {q:"Velocity is a vector quantity.",a:true,e:"Velocity has magnitude and direction."},
 {q:"Acceleration due to gravity is about 9.8 m/s².",a:true,e:"g ≈ 9.8 m/s² on Earth."},
 {q:"The SI unit of force is Newton.",a:true,e:"Force is measured in Newton."},
@@ -52,7 +50,6 @@ let questions=[
 {q:"Mitochondria is the powerhouse of the cell.",a:true,e:"It produces ATP energy."},
 
 // HARD
-
 {q:"The derivative of sin(x) is cos(x).",a:true,e:"Basic calculus identity."},
 {q:"The square root of 169 is 12.",a:false,e:"√169 = 13."},
 {q:"ATP is the energy currency of the cell.",a:true,e:"ATP stores energy in cells."},
@@ -64,8 +61,7 @@ let questions=[
 {q:"The Earth has two natural satellites.",a:false,e:"Earth has only one moon."},
 {q:"Energy cannot be created or destroyed.",a:true,e:"Law of conservation of energy."},
 
-// EXTRA QUESTIONS
-
+// EXTRA
 {q:"Mars is known as the Red Planet.",a:true,e:"Iron oxide makes Mars red."},
 {q:"Venus is the hottest planet in our solar system.",a:true,e:"Strong greenhouse effect."},
 {q:"Humans have 5 senses.",a:true,e:"Sight, smell, hearing, taste, touch."},
@@ -75,18 +71,7 @@ let questions=[
 {q:"Bats are mammals.",a:true,e:"They give birth and produce milk."},
 {q:"The Pacific Ocean is the largest ocean.",a:true,e:"It covers about one-third of Earth."},
 {q:"Mount Everest is the tallest mountain.",a:true,e:"Height ≈ 8848 m."},
-{q:"The Great Wall of China is visible from space.",a:false,e:"It is not easily visible."},
-
-{q:"The heart pumps blood through the body.",a:true,e:"Heart circulates blood."},
-{q:"Oxygen is necessary for respiration.",a:true,e:"Cells use oxygen to release energy."},
-{q:"The human brain weighs about 1.4 kg.",a:true,e:"Average adult brain weight."},
-{q:"Gold is a good conductor of electricity.",a:true,e:"Gold conducts electricity well."},
-{q:"Iron is lighter than aluminum.",a:false,e:"Aluminum is lighter."},
-{q:"A leap year has 366 days.",a:true,e:"Occurs every 4 years."},
-{q:"Saturn has rings.",a:true,e:"Saturn's rings are made of ice and rock."},
-{q:"Pluto is classified as a dwarf planet.",a:true,e:"Pluto was reclassified in 2006."},
-{q:"Humans have four lungs.",a:false,e:"Humans have two lungs."},
-{q:"Water is a universal solvent.",a:true,e:"It dissolves many substances."}
+{q:"The Great Wall of China is visible from space.",a:false,e:"It is not easily visible."}
 
 ]
 
@@ -104,7 +89,6 @@ timerText.innerText="⏱ Time: "+time
 function newQuestion(){
 
 current=questions[Math.floor(Math.random()*questions.length)]
-
 question.innerText=current.q
 
 }
@@ -114,14 +98,12 @@ function checkAnswer(ans){
 if(ans===current.a){
 
 playWin()
-
 score+=10
 coins+=2
 
 }else{
 
 playLose()
-
 score=Math.max(0,score-5)
 
 alert("❌ Wrong!\nCorrect answer: "+(current.a?"TRUE":"FALSE")+"\n\n"+current.e)
@@ -132,7 +114,6 @@ if(score%50===0){
 
 level++
 time+=5
-
 alert("⚡ Level Up!")
 
 }
@@ -151,7 +132,6 @@ if(coins>=10){
 
 coins-=10
 time+=15
-
 alert("⏱ Extra Time Purchased!")
 
 }else{
@@ -164,10 +144,11 @@ updateUI()
 
 }
 
+/* TIMER FIX */
+
 let timer=setInterval(()=>{
 
 time--
-
 updateUI()
 
 if(time<=0){
@@ -181,6 +162,8 @@ closeGame()
 }
 
 },1000)
+
+activeTimers.push(timer)
 
 updateUI()
 newQuestion()

@@ -35,7 +35,6 @@ let ans
 
 // EASY
 let easy=[
-
 {q:"Capital of India?",o:["New Delhi","Mumbai","Kolkata"],a:0},
 {q:"National animal of India?",o:["Tiger","Lion","Elephant"],a:0},
 {q:"National bird of India?",o:["Peacock","Parrot","Eagle"],a:0},
@@ -46,12 +45,10 @@ let easy=[
 {q:"Pink City of India?",o:["Jaipur","Delhi","Agra"],a:0},
 {q:"Gateway of India located in?",o:["Mumbai","Delhi","Kolkata"],a:0},
 {q:"India got independence in?",o:["1947","1950","1942"],a:0}
-
 ]
 
 // MEDIUM
 let medium=[
-
 {q:"Who wrote Indian National Anthem?",o:["Rabindranath Tagore","Gandhi","Nehru"],a:0},
 {q:"Largest state of India?",o:["Rajasthan","Maharashtra","UP"],a:0},
 {q:"Smallest state of India?",o:["Goa","Sikkim","Tripura"],a:0},
@@ -62,12 +59,10 @@ let medium=[
 {q:"Thar Desert is in which state?",o:["Rajasthan","Punjab","Gujarat"],a:0},
 {q:"Which ocean touches India?",o:["Indian Ocean","Pacific","Atlantic"],a:0},
 {q:"Golden Temple is in?",o:["Amritsar","Delhi","Jaipur"],a:0}
-
 ]
 
 // HARD
 let hard=[
-
 {q:"First President of India?",o:["Dr Rajendra Prasad","Radhakrishnan","Zakir Hussain"],a:0},
 {q:"Highest civilian award?",o:["Bharat Ratna","Padma Shri","Padma Bhushan"],a:0},
 {q:"ISRO headquarters?",o:["Bangalore","Delhi","Hyderabad"],a:0},
@@ -78,19 +73,16 @@ let hard=[
 {q:"Highest mountain in India?",o:["Kangchenjunga","Everest","Nanda Devi"],a:0},
 {q:"Which river called Dakshin Ganga?",o:["Godavari","Krishna","Kaveri"],a:0},
 {q:"Indian Constitution adopted in?",o:["1950","1947","1952"],a:0}
-
 ]
 
 // EXTRA HARD
 let extra=[
-
 {q:"First woman Prime Minister?",o:["Indira Gandhi","Sarojini Naidu","Pratibha Patil"],a:0},
 {q:"India became republic in?",o:["1950","1947","1942"],a:0},
 {q:"Mars mission of India?",o:["Mangalyaan","Chandrayaan","Gaganyaan"],a:0},
 {q:"Highest literacy state?",o:["Kerala","Goa","Maharashtra"],a:0},
 {q:"City of Lakes?",o:["Udaipur","Bhopal","Indore"],a:0},
 {q:"Who wrote Indian Constitution?",o:["B R Ambedkar","Nehru","Gandhi"],a:0}
-
 ]
 
 function updateLevel(){
@@ -101,10 +93,8 @@ else if(score>=100) level=2
 else level=1
 
 if(level!==lastLevel){
-
 usedQuestions=[]
 lastLevel=level
-
 }
 
 }
@@ -156,12 +146,10 @@ coins+=3
 combo++
 
 if(combo>=3){
-
 score+=20
 coins+=5
 combo=0
 alert("🔥 Combo Bonus!")
-
 }
 
 updateLevel()
@@ -244,6 +232,8 @@ optionsDiv.appendChild(btn)
 
 }
 
+// TIMER FIX
+
 let timer=setInterval(()=>{
 
 time--
@@ -258,6 +248,8 @@ closeGame()
 }
 
 },1000)
+
+activeTimers.push(timer)
 
 updateUI()
 getQuestion()

@@ -91,12 +91,9 @@ else if(score>=200) level=3
 else if(score>=100) level=2
 else level=1
 
-// reset used questions if level changed
 if(level!==lastLevel){
-
 usedQuestions=[]
 lastLevel=level
-
 }
 
 }
@@ -114,11 +111,8 @@ function getQuestion(){
 
 let pool=getPool()
 
-// reset if all used
 if(usedQuestions.length>=pool.length){
-
 usedQuestions=[]
-
 }
 
 let index
@@ -173,7 +167,6 @@ else{
 playLose()
 
 combo=0
-
 character.innerText="😵"
 
 setTimeout(()=>character.innerText="🐾",500)
@@ -197,7 +190,6 @@ timerText.innerText="⏱ Time: "+time
 
 }
 
-// SHOP
 shopBtn.onclick=function(){
 
 if(coins>=10){
@@ -217,7 +209,6 @@ updateUI()
 
 }
 
-// DAILY
 dailyBtn.onclick=function(){
 
 let q={q:"🎯 Daily: Smartest sea animal?",o:["Dolphin","Shark","Whale"],a:0}
@@ -250,7 +241,8 @@ optionsDiv.appendChild(btn)
 
 }
 
-// TIMER
+/* TIMER FIXED */
+
 let timer=setInterval(()=>{
 
 time--
@@ -259,12 +251,16 @@ updateUI()
 if(time<=0){
 
 clearInterval(timer)
+
 alert("⏰ Game Over! Score: "+score)
+
 closeGame()
 
 }
 
 },1000)
+
+activeTimers.push(timer)
 
 updateUI()
 getQuestion()

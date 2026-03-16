@@ -1,5 +1,9 @@
 const games={}
 
+let activeTimers=[]
+
+// register game
+
 function registerGame(id,name,start){
 
 games[id]=start
@@ -22,7 +26,14 @@ document.getElementById("menu").appendChild(card)
 
 }
 
+// open game
+
 function openGame(id){
+
+// stop old timers
+
+activeTimers.forEach(t=>clearInterval(t))
+activeTimers=[]
 
 const modal=document.getElementById("modal")
 
@@ -36,7 +47,14 @@ games[id](area)
 
 }
 
+// close game
+
 function closeGame(){
+
+// stop timers
+
+activeTimers.forEach(t=>clearInterval(t))
+activeTimers=[]
 
 document.getElementById("modal").style.display="none"
 

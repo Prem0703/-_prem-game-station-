@@ -42,9 +42,7 @@ timerText.innerText="⏱ Time: "+time
 }
 
 function shuffle(arr){
-
 return arr.sort(()=>Math.random()-0.5)
-
 }
 
 function startGame(){
@@ -54,13 +52,12 @@ first=null
 lock=false
 matched=0
 
-let size=level+1   // Level 1 → 2x2
+let size=level+1
 
 grid.style.gridTemplateColumns=`repeat(${size},70px)`
 
 let total=size*size
 
-// ensure even number
 if(total%2!==0) total--
 
 let pairCount=total/2
@@ -94,10 +91,8 @@ if(lock||card.innerText!=="❓") return
 card.innerText=e
 
 if(!first){
-
 first=card
 return
-
 }
 
 if(first.dataset.emoji===card.dataset.emoji){
@@ -106,7 +101,6 @@ playWin()
 
 score+=10
 coins+=2
-
 matched+=2
 
 first=null
@@ -114,7 +108,6 @@ first=null
 if(matched===cards.length){
 
 level++
-
 score+=30
 coins+=10
 
@@ -163,15 +156,15 @@ alert("⏱ +20 seconds purchased!")
 
 updateUI()
 
-}
-
-else{
+}else{
 
 alert("❌ Not enough coins!")
 
 }
 
 }
+
+/* TIMER FIX */
 
 let timer=setInterval(()=>{
 
@@ -191,8 +184,9 @@ closeGame()
 
 },1000)
 
-updateUI()
+activeTimers.push(timer)
 
+updateUI()
 startGame()
 
 })

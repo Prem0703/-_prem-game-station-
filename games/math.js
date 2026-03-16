@@ -53,35 +53,11 @@ timerText.innerText = "⏱ Time: " + time
 
 function updateLevel(){
 
-if(score >= 350){
-
-level = 5
-
-}
-
-else if(score >= 300){
-
-level = 4
-
-}
-
-else if(score >= 250){
-
-level = 3
-
-}
-
-else if(score >= 100){
-
-level = 2
-
-}
-
-else{
-
-level = 1
-
-}
+if(score >= 350) level = 5
+else if(score >= 300) level = 4
+else if(score >= 250) level = 3
+else if(score >= 100) level = 2
+else level = 1
 
 }
 
@@ -162,9 +138,7 @@ alert("🔥 Combo Bonus!")
 }
 
 updateLevel()
-
 updateUI()
-
 newQuestion()
 
 }
@@ -174,7 +148,6 @@ else{
 playLose()
 
 character.innerText = "😵"
-
 combo = 0
 
 setTimeout(()=>character.innerText="🧙",500)
@@ -215,7 +188,9 @@ question.innerText = `🎯 Daily Challenge: ${a} + ${b}`
 
 }
 
-let timer = setInterval(function(){
+/* TIMER FIX */
+
+let timer = setInterval(()=>{
 
 time--
 
@@ -235,6 +210,10 @@ closeGame()
 
 },1000)
 
+activeTimers.push(timer)
+
+/* SAVE SCORE */
+
 function saveScore(){
 
 let scores = JSON.parse(localStorage.getItem("mathScores") || "[]")
@@ -250,7 +229,6 @@ localStorage.setItem("mathScores",JSON.stringify(scores))
 }
 
 updateUI()
-
 newQuestion()
 
 })

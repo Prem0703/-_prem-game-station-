@@ -20,7 +20,7 @@ options.style.marginTop="20px"
 let shopBtn=document.createElement("button")
 shopBtn.innerText="🪙 Shop"
 
-area.append(levelText,scoreText,coinText,levelText,timerText,flag,options,shopBtn)
+area.append(levelText,scoreText,coinText,timerText,flag,options,shopBtn)
 
 let questions=[
 
@@ -65,7 +65,6 @@ options.innerHTML=""
 current.o.forEach(opt=>{
 
 let btn=document.createElement("button")
-
 btn.innerText=opt
 
 btn.onclick=function(){
@@ -117,6 +116,8 @@ updateUI()
 
 }
 
+/* TIMER FIX */
+
 let timer=setInterval(()=>{
 
 time--
@@ -134,6 +135,8 @@ closeGame()
 }
 
 },1000)
+
+activeTimers.push(timer)
 
 updateUI()
 newQuestion()

@@ -43,13 +43,10 @@ let base=emojis[Math.floor(Math.random()*emojis.length)]
 let diff=emojis[Math.floor(Math.random()*emojis.length)]
 
 while(diff===base){
-
 diff=emojis[Math.floor(Math.random()*emojis.length)]
-
 }
 
 let size=25+level*2
-
 let diffIndex=Math.floor(Math.random()*size)
 
 for(let i=0;i<size;i++){
@@ -82,13 +79,10 @@ alert("🔥 Combo Bonus!")
 }
 
 if(score%60===0){
-
 level++
-
 }
 
 updateUI()
-
 newRound()
 
 }
@@ -96,7 +90,6 @@ newRound()
 else{
 
 playLose()
-
 combo=0
 
 }
@@ -109,7 +102,7 @@ grid.appendChild(tile)
 
 }
 
-// SHOP BUTTON
+// SHOP
 
 shopBtn.onclick=function(){
 
@@ -130,7 +123,7 @@ alert("❌ Not enough coins!")
 
 }
 
-// TIMER
+// TIMER FIX
 
 let timer=setInterval(()=>{
 
@@ -150,8 +143,9 @@ closeGame()
 
 },1000)
 
-updateUI()
+activeTimers.push(timer)
 
+updateUI()
 newRound()
 
 })

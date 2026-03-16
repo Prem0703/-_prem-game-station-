@@ -136,6 +136,8 @@ updateUI()
 
 }
 
+/* TIMER FIX */
+
 let timer=setInterval(()=>{
 
 time--
@@ -148,7 +150,7 @@ clearInterval(timer)
 
 let minutes=120/60
 let wpm=Math.round(correct/minutes)
-let acc=Math.round((correct/typed)*100)
+let acc=typed>0 ? Math.round((correct/typed)*100) : 0
 
 alert("⏰ Game Over!\nScore: "+score+"\nWPM: "+wpm+"\nAccuracy: "+acc+"%")
 
@@ -157,6 +159,8 @@ closeGame()
 }
 
 },1000)
+
+activeTimers.push(timer)
 
 updateUI()
 newWord()

@@ -100,7 +100,10 @@ speed -= 20
 if(speed < 70) speed = 70
 
 clearInterval(gameInterval)
+
 gameInterval = setInterval(gameLoop,speed)
+
+activeTimers.push(gameInterval)
 
 alert("⚡ Level "+level+" Speed Increased!")
 
@@ -139,11 +142,9 @@ function draw(){
 ctx.fillStyle="#020617"
 ctx.fillRect(0,0,400,400)
 
-// food
 ctx.fillStyle="orange"
 ctx.fillRect(food.x,food.y,grid,grid)
 
-// snake
 ctx.fillStyle="#22c55e"
 
 snake.forEach(part=>{
@@ -161,6 +162,8 @@ updateUI()
 }
 
 let gameInterval = setInterval(gameLoop,speed)
+
+activeTimers.push(gameInterval)
 
 // timer
 let timer = setInterval(function(){
@@ -181,6 +184,8 @@ closeGame()
 }
 
 },1000)
+
+activeTimers.push(timer)
 
 updateUI()
 

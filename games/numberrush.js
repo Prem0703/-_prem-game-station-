@@ -154,6 +154,8 @@ updateUI()
 
 }
 
+/* TIMER FIX */
+
 let timer=setInterval(()=>{
 
 time--
@@ -171,6 +173,8 @@ closeGame()
 }
 
 },1000)
+
+activeTimers.push(timer)
 
 updateUI()
 startLevel()
