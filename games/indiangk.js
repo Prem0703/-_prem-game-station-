@@ -32,9 +32,12 @@ dailyBtn.innerText="🎯 Daily Challenge"
 area.append(character,levelText,scoreText,coinText,timerText,question,optionsDiv,shopBtn,dailyBtn)
 
 let ans
+let currentQ
 
-// EASY
+/* EASY */
+
 let easy=[
+
 {q:"Capital of India?",o:["New Delhi","Mumbai","Kolkata"],a:0},
 {q:"National animal of India?",o:["Tiger","Lion","Elephant"],a:0},
 {q:"National bird of India?",o:["Peacock","Parrot","Eagle"],a:0},
@@ -45,10 +48,13 @@ let easy=[
 {q:"Pink City of India?",o:["Jaipur","Delhi","Agra"],a:0},
 {q:"Gateway of India located in?",o:["Mumbai","Delhi","Kolkata"],a:0},
 {q:"India got independence in?",o:["1947","1950","1942"],a:0}
+
 ]
 
-// MEDIUM
+/* MEDIUM */
+
 let medium=[
+
 {q:"Who wrote Indian National Anthem?",o:["Rabindranath Tagore","Gandhi","Nehru"],a:0},
 {q:"Largest state of India?",o:["Rajasthan","Maharashtra","UP"],a:0},
 {q:"Smallest state of India?",o:["Goa","Sikkim","Tripura"],a:0},
@@ -59,10 +65,13 @@ let medium=[
 {q:"Thar Desert is in which state?",o:["Rajasthan","Punjab","Gujarat"],a:0},
 {q:"Which ocean touches India?",o:["Indian Ocean","Pacific","Atlantic"],a:0},
 {q:"Golden Temple is in?",o:["Amritsar","Delhi","Jaipur"],a:0}
+
 ]
 
-// HARD
+/* HARD */
+
 let hard=[
+
 {q:"First President of India?",o:["Dr Rajendra Prasad","Radhakrishnan","Zakir Hussain"],a:0},
 {q:"Highest civilian award?",o:["Bharat Ratna","Padma Shri","Padma Bhushan"],a:0},
 {q:"ISRO headquarters?",o:["Bangalore","Delhi","Hyderabad"],a:0},
@@ -73,16 +82,20 @@ let hard=[
 {q:"Highest mountain in India?",o:["Kangchenjunga","Everest","Nanda Devi"],a:0},
 {q:"Which river called Dakshin Ganga?",o:["Godavari","Krishna","Kaveri"],a:0},
 {q:"Indian Constitution adopted in?",o:["1950","1947","1952"],a:0}
+
 ]
 
-// EXTRA HARD
+/* EXTRA */
+
 let extra=[
+
 {q:"First woman Prime Minister?",o:["Indira Gandhi","Sarojini Naidu","Pratibha Patil"],a:0},
 {q:"India became republic in?",o:["1950","1947","1942"],a:0},
 {q:"Mars mission of India?",o:["Mangalyaan","Chandrayaan","Gaganyaan"],a:0},
 {q:"Highest literacy state?",o:["Kerala","Goa","Maharashtra"],a:0},
 {q:"City of Lakes?",o:["Udaipur","Bhopal","Indore"],a:0},
 {q:"Who wrote Indian Constitution?",o:["B R Ambedkar","Nehru","Gandhi"],a:0}
+
 ]
 
 function updateLevel(){
@@ -124,13 +137,13 @@ index=Math.floor(Math.random()*pool.length)
 
 usedQuestions.push(index)
 
-let q=pool[index]
+currentQ=pool[index]
 
-question.innerText=q.q
+question.innerText=currentQ.q
 optionsDiv.innerHTML=""
-ans=q.a
+ans=currentQ.a
 
-q.o.forEach((opt,i)=>{
+currentQ.o.forEach((opt,i)=>{
 
 let btn=document.createElement("button")
 btn.innerText=opt
@@ -160,7 +173,11 @@ getQuestion()
 
 playLose()
 combo=0
-alert("❌ Wrong!")
+
+let correct=currentQ.o[ans]
+
+alert("❌ Wrong!\n\nCorrect Answer: "+correct)
+
 getQuestion()
 
 }
@@ -232,7 +249,7 @@ optionsDiv.appendChild(btn)
 
 }
 
-// TIMER FIX
+/* TIMER */
 
 let timer=setInterval(()=>{
 
