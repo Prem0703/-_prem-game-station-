@@ -1,0 +1,221 @@
+body{
+
+background:#020617;
+
+color:white;
+
+font-family:Arial;
+
+text-align:center;
+
+margin:0;
+
+overflow:hidden;
+
+}
+
+/* animated background */
+
+.bgAnimation{
+
+position:fixed;
+
+width:100%;
+
+height:100%;
+
+background:linear-gradient(270deg,#020617,#1e293b,#020617);
+
+background-size:400% 400%;
+
+animation:bgMove 12s infinite;
+
+z-index:-1;
+
+}
+
+@keyframes bgMove{
+
+0%{background-position:0% 50%}
+
+50%{background-position:100% 50%}
+
+100%{background-position:0% 50%}
+
+}
+
+/* title */
+
+.title{
+
+font-size:45px;
+
+margin:20px;
+
+text-shadow:0 0 20px #22c55e;
+
+animation:titleGlow 2s infinite alternate;
+
+}
+
+@keyframes titleGlow{
+
+from{text-shadow:0 0 10px #22c55e}
+
+to{text-shadow:0 0 40px #22c55e}
+
+}
+
+/* game grid */
+
+#menu{
+
+display:grid;
+
+grid-template-columns:repeat(3,1fr);
+
+gap:25px;
+
+padding:40px;
+
+}
+
+/* game cards */
+
+.gameCard{
+
+background:#1e293b;
+
+padding:30px;
+
+border-radius:15px;
+
+cursor:pointer;
+
+transition:0.3s;
+
+font-size:22px;
+
+box-shadow:0 0 15px rgba(0,0,0,0.5);
+
+}
+
+.gameCard:hover{
+
+transform:scale(1.15) rotate(1deg);
+
+background:#22c55e;
+
+box-shadow:0 0 25px #22c55e;
+
+}
+
+/* modal */
+
+.modal{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:100%;
+
+background:rgba(0,0,0,0.8);
+
+display:none;
+
+justify-content:center;
+
+align-items:center;
+
+}
+
+/* game window */
+
+.modalBox{
+
+background:#0f172a;
+
+padding:40px;
+
+border-radius:20px;
+
+width:650px;
+
+animation:popup 0.4s;
+
+box-shadow:0 0 40px #22c55e;
+
+}
+
+@keyframes popup{
+
+from{transform:scale(0)}
+
+to{transform:scale(1)}
+
+}
+
+.closeBtn{
+
+background:red;
+
+border:none;
+
+color:white;
+
+padding:10px;
+
+cursor:pointer;
+
+font-size:16px;
+
+}
+
+/* buttons */
+
+button{
+
+padding:10px 20px;
+
+margin:10px;
+
+border:none;
+
+border-radius:10px;
+
+background:#22c55e;
+
+cursor:pointer;
+
+font-size:16px;
+
+transition:0.2s;
+
+}
+
+button:hover{
+
+transform:scale(1.1);
+
+}
+
+/* inputs */
+
+input{
+
+padding:10px;
+
+border-radius:8px;
+
+border:none;
+
+margin:10px;
+
+font-size:16px;
+
+}
