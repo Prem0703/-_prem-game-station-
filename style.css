@@ -5,7 +5,7 @@ color:white;
 font-family:Arial;
 text-align:center;
 margin:0;
-overflow:hidden;
+overflow-x:hidden;
 
 }
 
@@ -51,8 +51,6 @@ margin:25px;
 font-weight:800;
 letter-spacing:2px;
 
-/* gradient text */
-
 background:linear-gradient(
 90deg,
 #22c55e,
@@ -62,18 +60,12 @@ background:linear-gradient(
 );
 
 background-size:300%;
-
 -webkit-background-clip:text;
-
 color:transparent;
-
-/* animation */
 
 animation:
 gradientMove 6s linear infinite,
 titleFloat 3s ease-in-out infinite;
-
-/* glow */
 
 text-shadow:
 0 0 10px #22c55e,
@@ -81,8 +73,6 @@ text-shadow:
 0 0 50px #22c55e;
 
 }
-
-/* gradient animation */
 
 @keyframes gradientMove{
 
@@ -92,14 +82,10 @@ text-shadow:
 
 }
 
-/* floating title */
-
 @keyframes titleFloat{
 
 0%{transform:translateY(0)}
-
 50%{transform:translateY(-8px)}
-
 100%{transform:translateY(0)}
 
 }
@@ -109,11 +95,8 @@ text-shadow:
 #menu{
 
 display:grid;
-
 grid-template-columns:repeat(3,1fr);
-
 gap:25px;
-
 padding:40px;
 
 }
@@ -123,29 +106,19 @@ padding:40px;
 .gameCard{
 
 background:#1e293b;
-
 padding:30px;
-
 border-radius:15px;
-
 cursor:pointer;
-
 transition:0.3s;
-
 font-size:22px;
-
 box-shadow:0 0 15px rgba(0,0,0,0.5);
 
 }
 
-/* hover effect */
-
 .gameCard:hover{
 
 transform:scale(1.15) rotate(1deg);
-
 background:#22c55e;
-
 box-shadow:0 0 30px #22c55e;
 
 }
@@ -155,17 +128,12 @@ box-shadow:0 0 30px #22c55e;
 .modal{
 
 position:fixed;
-
 top:0;
 left:0;
-
 width:100%;
 height:100%;
-
 background:rgba(0,0,0,0.8);
-
 display:none;
-
 justify-content:center;
 align-items:center;
 
@@ -176,15 +144,11 @@ align-items:center;
 .modalBox{
 
 background:#0f172a;
-
 padding:40px;
-
 border-radius:20px;
-
 width:650px;
-
+max-width:90%;
 animation:popup 0.4s;
-
 box-shadow:0 0 40px #22c55e;
 
 }
@@ -192,7 +156,6 @@ box-shadow:0 0 40px #22c55e;
 @keyframes popup{
 
 from{transform:scale(0)}
-
 to{transform:scale(1)}
 
 }
@@ -202,15 +165,10 @@ to{transform:scale(1)}
 .closeBtn{
 
 background:red;
-
 border:none;
-
 color:white;
-
 padding:10px;
-
 cursor:pointer;
-
 font-size:16px;
 
 }
@@ -220,29 +178,19 @@ font-size:16px;
 button{
 
 padding:10px 20px;
-
 margin:10px;
-
 border:none;
-
 border-radius:10px;
-
 background:#22c55e;
-
 cursor:pointer;
-
 font-size:16px;
-
 transition:0.2s;
 
 }
 
-/* button hover */
-
 button:hover{
 
 transform:scale(1.1);
-
 box-shadow:0 0 10px #22c55e;
 
 }
@@ -252,15 +200,61 @@ box-shadow:0 0 10px #22c55e;
 input{
 
 padding:10px;
-
 border-radius:8px;
-
 border:none;
-
 margin:10px;
-
 font-size:16px;
-
 outline:none;
+
+}
+
+/* ================= MOBILE RESPONSIVE ================= */
+
+@media (max-width:900px){
+
+#menu{
+grid-template-columns:repeat(2,1fr);
+padding:20px;
+gap:15px;
+}
+
+.title{
+font-size:40px;
+}
+
+.modalBox{
+width:90%;
+padding:25px;
+}
+
+}
+
+@media (max-width:600px){
+
+#menu{
+grid-template-columns:1fr;
+padding:15px;
+gap:12px;
+}
+
+.title{
+font-size:30px;
+margin:15px;
+}
+
+.gameCard{
+font-size:18px;
+padding:20px;
+}
+
+button{
+font-size:14px;
+padding:8px 15px;
+}
+
+.modalBox{
+width:95%;
+padding:20px;
+}
 
 }
